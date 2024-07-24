@@ -1,0 +1,85 @@
+{
+  "manifest_version": 3,
+  "name": "VICCI - Vision Impaired Computer Control Interface",
+  "version": "1.0",
+  "description": "An AI-powered screen reader and web navigation assistant for visually impaired users",
+  "permissions": [
+    "activeTab",
+    "tts",
+    "commands",
+    "tabs",
+    "storage",
+    "declarativeNetRequest"
+  ],
+  "host_permissions": ["<all_urls>"],
+  "background": {
+    "service_worker": "background/background.js"
+  },
+  "declarative_net_request": {
+    "rule_resources": [
+      {
+        "id": "ruleset_1",
+        "enabled": true,
+        "path": "rules.json"
+      }
+    ]
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": [
+        "commands/describe-page.js",
+        "persona/prompt.js",
+        "persona/actions.js",
+        "persona/index.js",
+        "utils/dom-parser.js",
+        "utils/text-to-speech.js",
+        "utils/vision-service.js",
+        "utils/voice-recognition.js",
+        "content/content-script.js"
+      ],
+      "css": ["content/styles.css"]
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["audio/*"],
+      "matches": ["<all_urls>"]
+    }
+  ],
+  "icons": {
+    "16": "public/icons/icon16.png",
+    "48": "public/icons/icon48.png",
+    "128": "public/icons/icon128.png"
+  },
+  "commands": {
+    "activate-vicci": {
+      "suggested_key": {
+        "default": "Alt+Shift+V",
+        "mac": "Command+Shift+V"
+      },
+      "description": "Activate VICCI"
+    },
+    "describe-page": {
+      "suggested_key": {
+        "default": "Alt+Shift+P",
+        "mac": "Command+Shift+P"
+      },
+      "description": "Describe current page"
+    },
+    "search-term": {
+      "suggested_key": {
+        "default": "Alt+Shift+L",
+        "mac": "Command+Shift+L"
+      },
+      "description": "Search for term"
+    },
+    "activate-microphone": {
+      "suggested_key": {
+        "default": "Alt+Shift+M",
+        "mac": "Command+Shift+M"
+      },
+      "description": "Activate Microphone"
+    }
+  }
+}

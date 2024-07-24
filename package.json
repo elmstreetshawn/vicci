@@ -1,0 +1,31 @@
+{
+  "name": "vicci-extension",
+  "version": "1.0.0",
+  "description": "Vision Impaired Computer Control Interface - An AI-powered screen reader and web navigation assistant",
+  "main": "src/background/index.js",
+  "scripts": {
+    "test": "jest",
+    "build": "node scripts/build.js",
+    "lint": "eslint src/**/*.js",
+    "format": "prettier --write \"src/**/*.js\""
+  },
+  "keywords": [
+    "accessibility",
+    "screen-reader",
+    "chrome-extension"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/core": "^7.14.0",
+    "@babel/preset-env": "^7.14.0",
+    "babel-jest": "^27.0.0",
+    "eslint": "^7.26.0",
+    "jest": "^27.0.0",
+    "prettier": "^2.3.0",
+    "@sindarin/persona": "^0.0.18",
+    "@google-cloud/vertexai": "^1.4.0",
+    "html2canvas": "^1.4.1",
+    "mime-types": "^2.1.35"
+  }
+}
